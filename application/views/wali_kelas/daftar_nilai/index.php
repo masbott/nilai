@@ -1,3 +1,8 @@
+<ol class="breadcrumb">
+  <li><a href="#">Home</a></li>
+  <li><a href="#">Library</a></li>
+  <li class="active">Data</li>
+</ol>
 
 <?php if( $mapel->num_rows() > 0 ): ?>
 		<?php $mapeles[0] = '-- Pilih Matapelajaran --'; ?>
@@ -51,49 +56,135 @@
 	<button class="btn btn-primary btn-sm pull-right" style="margin-bottom:5px;"><i class="fa fa-print"></i> Cetak</button>
 <?php endif; ?>
 
-<table class="table table-striped table-bordered" width="100%">
-	<thead>
-		<tr>
-			<th style="text-align:center;font-weight:normal;" rowspan="2" width="2%">#</th>
-			<th style="text-align:center;font-weight:normal;" rowspan="2" width="5%">Siswa</th>
-			<th style="text-align:center;font-weight:normal;" colspan="4" width="20%">Ulangan Harian</th>
-			<th style="text-align:center;font-weight:normal;" colspan="4" width="20%">Nilai Tugas</th>
-			<th style="text-align:center;font-weight:normal;" rowspan="2" width="5%">Ujian Tengah Semester</th>
-			<th style="text-align:center;font-weight:normal;" rowspan="2" width="5%">Ujian Akhir Semester</th>
-		</tr>
-		<tr>
-			<th style="text-align:center;font-weight:normal;">1</th>
-			<th style="text-align:center;font-weight:normal;">2</th>
-			<th style="text-align:center;font-weight:normal;">3</th>
-			<th style="text-align:center;font-weight:normal;">4</th>
-			<th style="text-align:center;font-weight:normal;">1</th>
-			<th style="text-align:center;font-weight:normal;">2</th>
-			<th style="text-align:center;font-weight:normal;">3</th>
-			<th style="text-align:center;font-weight:normal;">4</th>
-		</tr>
-	</thead>
-	<tbody>
-		<?php $no = 1; if( !empty( $get_data ) ): ?>
-			<?php foreach( $get_data->result() as $d ): ?>
+<div class="table-data">
+	<table class="table table-striped table-bordered table-responsive data" width="100%">
+		<thead>
 				<tr>
-					<td><?php echo $no++ ?></td>
-					<td><?php echo $d->nama_siswa ?></td>
-					<td><?php echo $d->uh1 ?></td>
-					<td><?php echo $d->uh2 ?></td>
-					<td><?php echo $d->uh3 ?></td>
-					<td><?php echo $d->uh4 ?></td>
-					<td><?php echo $d->nt1 ?></td>
-					<td><?php echo $d->nt2 ?></td>
-					<td><?php echo $d->nt3 ?></td>
-					<td><?php echo $d->nt4 ?></td>
-					<td><?php echo $d->uts ?></td>
-					<td><?php echo $d->uas ?></td>
+					<th class="wrap" rowspan="3">#</th>
+					<th class="wrap" rowspan="3">Nama Siswa</th>
+					<th class="wrap" colspan="10" width="30%"><strong>NILAI PENGETAHUAN</strong></th>
+					<th class="wrap" colspan="10" width="30%"><strong>NILAI PRAKTEK</strong></th>
+					<th class="wrap" colspan="10" width="30%"><strong>NILAI SIKAP</strong></th>
+					<th class="wrap" rowspan="3">Ketuntasan</th>
 				</tr>
-			<?php endforeach; ?>
-		<?php else : ?>
-			<tr>
-				<td colspan="12">DATA TIDAK TERSEDIA</td>
-			</tr>
-		<?php endif; ?>
-	</tbody>
-</table>
+				<tr>
+
+					<th class="wrap" colspan="5">R.Nilai Harian</th>
+					<th class="wrap" rowspan="2">NTS</th>
+					<th class="wrap" rowspan="2">NAS</th>
+					<th class="wrap" rowspan="2">R.Nilai</th>
+					<th class="wrap" colspan="2">Nilai LHB</th>
+
+					<th class="wrap" colspan="5">R.Nilai Praktek</th>
+					<th class="wrap" rowspan="2">Projek</th>
+					<th class="wrap" rowspan="2">Portofolio</th>
+					<th class="wrap" rowspan="2">R.Nilai</th>
+					<th class="wrap" colspan="2">Nilai LHB</th>
+
+					<th class="wrap" colspan="5">Observasi</th>
+					<th class="wrap" rowspan="2">PD</th>
+					<th class="wrap" rowspan="2">PS</th>
+					<th class="wrap" rowspan="2">Jurnal</th>
+					<th class="wrap" rowspan="2">R.Nilai</th>
+					<th class="wrap" rowspan="2">Kualifikasi</th>
+
+				</tr>
+				<tr>
+					<th class="wrap">1</th>
+					<th class="wrap">2</th>
+					<th class="wrap">3</th>
+					<th class="wrap">4</th>
+					<th class="wrap">5</th>
+					<th class="wrap">NA</th>
+					<th class="wrap">Pre</th>
+
+					<th class="wrap">1</th>
+					<th class="wrap">2</th>
+					<th class="wrap">3</th>
+					<th class="wrap">4</th>
+					<th class="wrap">5</th>
+					<th class="wrap">NA</th>
+					<th class="wrap">Pre</th>
+
+					<th class="wrap">1</th>
+					<th class="wrap">2</th>
+					<th class="wrap">3</th>
+					<th class="wrap">4</th>
+					<th class="wrap">5</th>
+
+				</tr>
+		</thead>
+		<tbody>
+			<?php $no = 1; if( !empty( $result_s ) ): ?>
+				<?php foreach( $result_s as $d ): ?>
+					<tr>
+						<td><?php echo $d['no']; ?></td>
+						<td><?php echo $d['siswa'] ?></td>
+						<td><?php echo $d['n_h_1'] ?></td>
+						<td><?php echo $d['n_h_2'] ?></td>
+						<td><?php echo $d['n_h_3'] ?></td>
+						<td><?php echo $d['n_h_4'] ?></td>
+						<td><?php echo $d['n_h_5'] ?></td>
+						<td><?php echo $d['nts'] ?></td>
+						<td><?php echo $d['nas'] ?></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+					</tr>
+				<?php endforeach; ?>
+			<?php else : ?>
+				<tr>
+					<td colspan="33">DATA TIDAK TERSEDIA</td>
+				</tr>
+			<?php endif; ?>
+		</tbody>
+	</table>
+</div>
+
+<style type="text/css">
+	.data { 
+		border-collapse:separate; 
+		border-top: 1px solid #eee; 
+	}
+
+	.table-data {
+        width: 1200px; 
+        overflow-x:scroll;  
+        /*padding-left:5em; */
+        overflow-y:visible;
+        padding-bottom:1px;
+	}
+
+	.table-bordered > thead > tr > th, .table-bordered > tbody > tr > th, .table-bordered > tfoot > tr > th, .table-bordered > thead > tr > td, .table-bordered > tbody > tr > td, .table-bordered > tfoot > tr > td {
+		border: 1px solid #eee;
+		text-align:center; 
+		font-weight:normal; 
+	}
+
+	.head {
+            position:absolute; 
+            height: 4em;
+            overflow:hidden;
+        }
+
+</style>

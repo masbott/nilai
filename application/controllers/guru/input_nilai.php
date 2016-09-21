@@ -21,6 +21,7 @@ class Input_nilai extends CI_Controller
 		$result_get = $get['id_guru'];
 
 		$this->data['get_form_nilai'] = array('0' => 'null');
+		
 		if( $this->input->post('submit') ):
 				$get_form_nilai = $this->db->query('SELECT a.*, c.nama_siswa
 					                                FROM `nilai` a
@@ -39,7 +40,9 @@ class Input_nilai extends CI_Controller
 			$t = [];
 			$angka_nts = [];
 			$angka_nas = [];
-			foreach( $get_form_nilai->result() as $g ):
+			$h = 1;
+
+			foreach( $get_form_nilai->result() as $key => $g ):
 				$angka_nts[] = $g->nts;
 				$angka_nas[] = $g->nas;
 				$s[$g->id]['id'] = $g->id;
@@ -75,6 +78,7 @@ class Input_nilai extends CI_Controller
 			$t = null;
 			$angka_nts = null;
 		endif;
+			
 			
 		$this->data['get_form_nilai'] = $s;
 		$this->data['get_kesimpulan'] = $t;

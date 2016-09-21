@@ -72,8 +72,6 @@
 				<th class="wrap" colspan="10" width="30%"><strong>NILAI PRAKTEK</strong></th>
 				<th class="wrap" colspan="10" width="30%"><strong>NILAI SIKAP</strong></th>
 				<th class="wrap" rowspan="3">Ketuntasan</th>
-				<!-- <th style="text-align:center; font-weight:normal;" class="wrap" rowspan="2">Ulangan Tengah Semester</th>
-				<th style="text-align:center; font-weight:normal;" class="wrap" rowspan="2">Ulangan Akhir Semester</th> -->
 			</tr>
 			<tr>
 
